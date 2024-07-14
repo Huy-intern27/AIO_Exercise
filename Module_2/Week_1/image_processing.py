@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt  # type: ignore
 def light_ness(img):
     max_img = np.max(img[..., :3], axis=2)
     min_img = np.min(img[..., :3], axis=2)
-    gray_img = (max_img + min_img) / 2
+    gray_img = max_img * 0.5 + min_img * 0.5
     return gray_img
 
 
