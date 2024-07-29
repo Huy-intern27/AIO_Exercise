@@ -56,6 +56,7 @@ def train_naive_bayes(train_data):
 def prediction_play_tennis(sample, list_x_name, prior_probability, conditional_probability):
     p0 = 1
     p1 = 1
+    sum_conditional_probability = 0
 
     for i in range(len(sample)):
         sample_i = get_index_from_value(sample[i], list_x_name[i])
@@ -64,6 +65,12 @@ def prediction_play_tennis(sample, list_x_name, prior_probability, conditional_p
 
     p0 *= prior_probability[0]
     p1 *= prior_probability[1]
+
+    sum_conditional_probability += p0
+    sum_conditional_probability += p1
+    p0 /= sum_conditional_probability
+    p1 /= sum_conditional_probability
+
     if p0 > p1:
         y_pred = 0
     else:
